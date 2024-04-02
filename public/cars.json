@@ -1,0 +1,217 @@
+[
+    {
+      "_id": "654f6d935abba09d18da69cb",
+      "location": "Gulshan-1, Dhaka",
+      "title": "Noah",
+      "from": "2023-11-27T18:00:00.000Z",
+      "to": "2023-11-29T18:00:00.000Z",
+      "price": 3005,
+      "capacity": "6",
+      "description": "Latest brand new car which will give you comfort while enjoying your day",
+      "image": "https://i.ibb.co/NrFsmQM/car-1851299-1280.jpg",
+      "owner": {
+        "name": "Madiha Haque",
+        "image": "https://i.ibb.co/qy7zyg2/ezgif-1-02e84e33a1.jpg",
+        "email": "madia.haque@gmail.com"
+      },
+      "category": "New"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cb",
+      "location": "Paltan, Dhaka",
+      "title": "Toyota RGX",
+      "from": "2023-11-25T18:00:00.000Z",
+      "to": "2023-11-29T18:00:00.000Z",
+      "price": 269,
+      "capacity": "5",
+      "description": "Class toyota car will give you immense experience",
+      "image": "https://i.ibb.co/pfhMw5R/classic-car-584118-1280.jpg",
+      "owner": {
+        "name": "Sanjida",
+        "image": "https://ibb.co/zFjVqth",
+        "email": "sanjida@gmail.com"
+      },
+      "category": "Old"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cbc",
+      "location": "Banani, Dhaka",
+      "title": "Honda Civic",
+      "from": "2023-12-05T18:00:00.000Z",
+      "to": "2023-12-06T18:00:00.000Z",
+      "price": 1500,
+      "capacity": "4",
+      "description": "Elegant and efficient, perfect for city driving",
+      "image": "https://i.ibb.co/G2QvRK5/coupe-1374450-1280.jpg",
+      "owner": {
+        "name": "Rahim Khan",
+        "image": "https://i.ibb.co/WvrS8Nk/owner1.jpg",
+        "email": "rahim.khan@example.com"
+      },
+      "category": "Compact",
+      "renter_phone": "+8801234567890"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cbd",
+      "location": "Mirpur, Dhaka",
+      "title": "BMW X5",
+      "from": "2023-12-10T18:00:00.000Z",
+      "to": "2023-12-12T18:00:00.000Z",
+      "price": 5000,
+      "capacity": "5",
+      "description": "Luxury SUV with cutting-edge features",
+      "image": "https://i.ibb.co/KsRjc23/car-4445171-1280.jpg",
+      "owner": {
+        "name": "Sara Ahmed",
+        "image": "https://i.ibb.co/QfW3Zv7/owner2.jpg",
+        "email": "sara.ahmed@example.com"
+      },
+      "category": "Luxury",
+      "renter_phone": "+8801987654321"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cbe",
+      "location": "Uttara, Dhaka",
+      "title": "Mercedes-Benz C-Class",
+      "from": "2023-12-08T18:00:00.000Z",
+      "to": "2023-12-10T18:00:00.000Z",
+      "price": 3500,
+      "capacity": "4",
+      "description": "Experience the epitome of luxury and performance",
+      "image": "https://i.ibb.co/MVBM87K/mercedes-3417100-1280.jpg",
+      "owner": {
+        "name": "Ali Khan",
+        "image": "https://i.ibb.co/6gcpsV7/owner3.jpg",
+        "email": "ali.khan@example.com"
+      },
+      "category": "Luxury",
+      "renter_phone": "+8801357924680"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cbf",
+      "location": "Dhanmondi, Dhaka",
+      "title": "Toyota Prius",
+      "from": "2023-12-15T18:00:00.000Z",
+      "to": "2023-12-16T18:00:00.000Z",
+      "price": 1800,
+      "capacity": "5",
+      "description": "Fuel-efficient hybrid car, perfect for eco-conscious drivers",
+      "image": "https://i.ibb.co/5kzgKC2/automobile-5330343-1280.jpg",
+      "owner": {
+        "name": "Fatima Rahman",
+        "image": "https://i.ibb.co/4gShrFg/owner4.jpg",
+        "email": "fatima.rahman@example.com"
+      },
+      "category": "Eco-Friendly",
+      "renter_phone": "+8801357924680"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cc0",
+      "location": "Mohammadpur, Dhaka",
+      "title": "Ford Mustang",
+      "from": "2023-12-20T18:00:00.000Z",
+      "to": "2023-12-22T18:00:00.000Z",
+      "price": 4500,
+      "capacity": "4",
+      "description": "Iconic American muscle car for an exhilarating drive",
+      "image": "https://i.ibb.co/Hp0hpVC/coupe-1374448-1280.jpg",
+      "owner": {
+        "name": "Imran Khan",
+        "image": "https://i.ibb.co/5nZmcCR/owner5.jpg",
+        "email": "imran.khan@example.com"
+      },
+      "category": "Sports",
+      "renter_phone": "+8801357924680"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cc1",
+      "location": "Bashundhara, Dhaka",
+      "title": "Hyundai Elantra",
+      "from": "2023-12-25T18:00:00.000Z",
+      "to": "2023-12-26T18:00:00.000Z",
+      "price": 2000,
+      "capacity": "5",
+      "description": "Modern sedan with sleek design and advanced features",
+      "image": "https://i.ibb.co/4pFvrvX/aston-martin-2118857-640.jpg",
+      "owner": {
+        "name": "Nadia Khan",
+        "image": "https://i.ibb.co/1TjXV2P/owner6.jpg",
+        "email": "nadia.khan@example.com"
+      },
+      "category": "Compact",
+      "renter_phone": "+8801357924680"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cc2",
+      "location": "Banani, Dhaka",
+      "title": "Lexus RX 350",
+      "from": "2023-12-28T18:00:00.000Z",
+      "to": "2023-12-30T18:00:00.000Z",
+      "price": 3800,
+      "capacity": "5",
+      "description": "Luxurious crossover SUV with refined interior",
+      "image": "https://i.ibb.co/4FzWSZf/maserati-gran-turismo-1649119-1280.jpg",
+      "owner": {
+        "name": "Farhana Islam",
+        "image": "https://i.ibb.co/3hNY9qY/owner7.jpg",
+        "email": "farhana.islam@example.com"
+      },
+      "category": "Luxury",
+      "renter_phone": "+8801357924680"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cc3",
+      "location": "Gulshan, Dhaka",
+      "title": "Audi A4",
+      "from": "2024-01-05T18:00:00.000Z",
+      "to": "2024-01-06T18:00:00.000Z",
+      "price": 4200,
+      "capacity": "4",
+      "description": "Exquisite sedan with cutting-edge technology and performance",
+      "image": "https://i.ibb.co/rZWc9qN/car-1890494-1280.jpg",
+      "owner": {
+        "name": "Karim Ahmed",
+        "image": "https://i.ibb.co/zHPg58v/owner8.jpg",
+        "email": "karim.ahmed@example.com"
+      },
+      "category": "Luxury",
+      "renter_phone": "+8801357924680"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cc4",
+      "location": "Mohakhali, Dhaka",
+      "title": "Tesla Model 3",
+      "from": "2024-01-10T18:00:00.000Z",
+      "to": "2024-01-12T18:00:00.000Z",
+      "price": 6000,
+      "capacity": "5",
+      "description": "Cutting-edge electric car with futuristic design and technology",
+      "image": "https://i.ibb.co/q0nrP81/coupe-1374446-1280.jpg",
+      "owner": {
+        "name": "Ahmed Hassan",
+        "image": "https://i.ibb.co/3RGz6cV/owner9.jpg",
+        "email": "ahmed.hassan@example.com"
+      },
+      "category": "Electric",
+      "renter_phone": "+8801357924680"
+    },
+    {
+      "_id": "654f6d935ee09d18da69cc5",
+      "location": "Dhanmondi, Dhaka",
+      "title": "Range Rover Evoque",
+      "from": "2024-01-15T18:00:00.000Z",
+      "to": "2024-01-16T18:00:00.000Z",
+      "price": 5500,
+      "capacity": "5",
+      "description": "Luxurious compact SUV with off-road capabilities",
+      "image": "https://i.ibb.co/NrFsmQM/car-1851299-1280.jpg",
+      "owner": {
+        "name": "Sadia Rahman",
+        "image": "https://i.ibb.co/B3R2yrF/owner10.jpg",
+        "email": "sadia.rahman@example.com"
+      },
+      "category": "Luxury",
+      "renter_phone": "+8801357924680"
+    }
+  ]
+  
