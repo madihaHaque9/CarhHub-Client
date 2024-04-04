@@ -6,7 +6,7 @@ import avatarImg from '../assets/avatar/placeholder.jpg'
 
 const MenuDropDown = () => {
     const [isOpen, setIsOpen] = useState(false)
-  const { user } = useAuth()
+  const { user,logOut } = useAuth()
     return (
         <div className='relative'>
         <div className='flex flex-row items-center gap-3'>
@@ -44,8 +44,23 @@ const MenuDropDown = () => {
               >
                 Home
               </Link>
+  {user?<>
   
-              <Link
+    <Link
+                to='/dashboard'
+                className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+              >
+                Dashboard
+              </Link>
+              <div onClick={logOut}
+               
+                className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
+              >
+                Logout
+              </div>
+  </>:<>
+  
+  <Link
                 to='/login'
                 className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
               >
@@ -57,6 +72,7 @@ const MenuDropDown = () => {
               >
                 Sign Up
               </Link>
+  </>}
             </div>
           </div>
         )}

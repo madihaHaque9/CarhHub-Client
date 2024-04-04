@@ -1,16 +1,72 @@
+
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { imageUpload } from "../../../api/utils";
+import { TbFidgetSpinner } from "react-icons/tb";
+
+
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { getToken, saveUser } from "../../../api/auth";
+import toast from "react-hot-toast";
 
 
 const SignUp = () => {
+  const {createUser,updateUserProfile,loading,googleSignIn}=useContext(AuthContext);
+  const navigate=useNavigate();
+  const handleSubmit=async (e)=>{
+
+    e.preventDefault();
+    const form=e.target;
+    const name=form.name.value;
+    const email=form.email.value;
+    const password=form.password.value;
+    const image=form.image.files[0];
+ 
+   
+    try{
+      const imageData=await imageUpload(image);
+     const result= await createUser(email,password)
+     await updateUserProfile(name,imageData?.data?.display_url)
+     console.log(result)
+     const dbResponse=await saveUser(result?.user);
+     console.log(dbResponse)
+     await getToken(result?.user?.email)
+     navigate('/')
+     toast.success("SignedUp Successfully")
+    }
+    catch(err){
+      toast.error(err?.message)
+    }
+
+
+  }
+  const handleGoogleSignIn=async()=>{
+    try{
+    
+     const result= await googleSignIn();
+     
+     
+     const dbResponse=await saveUser(result?.user);
+     console.log(dbResponse)
+     await getToken(result?.user?.email)
+     navigate('/')
+     toast.success("SignedUp Successfully")
+    }
+    catch(err){
+      toast.error(err?.message)
+    }
+
+    
+  }
     return (
         <div className='flex justify-center items-center min-h-screen'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-          <p className='text-sm text-gray-400'>Welcome to StayVista</p>
+          <p className='text-sm text-gray-400'>Welcome to CarHub</p>
         </div>
-        <form
+        <form onSubmit={handleSubmit}
           noValidate=''
           action=''
           className='space-y-6 ng-untouched ng-pristine ng-valid'
@@ -78,7 +134,7 @@ const SignUp = () => {
               type='submit'
               className='bg-rose-500 w-full rounded-md py-3 text-white'
             >
-              Continue
+              {loading ? <TbFidgetSpinner className="animate-spin m-auto"></TbFidgetSpinner>: 'Continue'}
             </button>
           </div>
         </form>
@@ -89,7 +145,7 @@ const SignUp = () => {
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer' onClick={handleGoogleSignIn}>
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
@@ -102,7 +158,7 @@ const SignUp = () => {
           >
             Login
           </Link>
-          .
+          
         </p>
       </div>
     </div>

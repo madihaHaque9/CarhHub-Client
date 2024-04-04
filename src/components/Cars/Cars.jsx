@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Cards from "./Cards";
 import Container from "../../NavBar/Container";
 import { useSearchParams } from "react-router-dom";
+import { getAllCars } from "../../api/cars";
 
 
 const Cars = () => {
@@ -9,8 +10,8 @@ const Cars = () => {
     const [params,setParams]=useSearchParams();
     const category=params.get('category')
     useEffect(()=>{
-        fetch('./cars.json')
-        .then(res=>res.json())
+        getAllCars()
+       
         .then(data=>{
             if(category){
                 const filter=data.filter(car=>car.category === category)
