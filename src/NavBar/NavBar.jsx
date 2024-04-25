@@ -6,7 +6,7 @@ import Container from "./Container";
 
 const NavBar = () => {
     return (
-        <div className='z-10  fixed w-full bg-gradient-to-r from-black to-red-700 ...  shadow-sm h-[110px]'>
+        <div className='z-10 w-full  fixed  bg-gradient-to-r from-black to-red-700   shadow-sm h-[110px]'>
         <div className='py-4 border-b-[1px]'>
           <Container>
             <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>

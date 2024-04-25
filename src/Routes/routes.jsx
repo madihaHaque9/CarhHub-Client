@@ -10,6 +10,13 @@ import { getCar } from "../api/cars";
 import DashboardLayout from "../layout/Dashboard/Dashboard";
 import AddCar from "../layout/Dashboard/Owner/AddCar";
 import MyListings from "../layout/Dashboard/Owner/MyListings";
+import OwnerRoute from "./OwnerRoute";
+import AdminRoute from "./AdminRoute";
+import ManageUsers from "../pages/Admin/ManageUsers";
+import Profile from "../layout/Dashboard/Common/Profile";
+import MyBookings from "../pages/Passenger/MyBookings";
+import ManageBookings from "../layout/Dashboard/Owner/ManageBookings";
+import Statistics from "../layout/Dashboard/Common/Statistics";
 
 
 
@@ -40,13 +47,37 @@ export const router = createBrowserRouter([
       element:<DashboardLayout></DashboardLayout>,
       children:[
         {
+          index: true,
+          element: (
+            <PrivateRoute>
+              <Statistics />
+            </PrivateRoute>
+          ),
+        },
+        {
           path:'add-car',
-          element:<AddCar></AddCar>
+          element:<PrivateRoute><OwnerRoute><AddCar></AddCar></OwnerRoute></PrivateRoute>
         },
         {
           path:'my-listings',
-          element:<MyListings></MyListings>
+          element:<PrivateRoute><OwnerRoute><MyListings></MyListings></OwnerRoute></PrivateRoute>
         },
+        {
+          path:'manage-users',
+          element:<PrivateRoute><AdminRoute><ManageUsers></ManageUsers></AdminRoute></PrivateRoute>
+        },
+        {
+          path:'profile',
+          element:<PrivateRoute><Profile></Profile></PrivateRoute>
+        },
+        {
+          path:'my-bookings',
+          element:<PrivateRoute><MyBookings></MyBookings></PrivateRoute>
+        },
+        {
+          path:'manage-bookings',
+          element:<OwnerRoute><ManageBookings></ManageBookings></OwnerRoute>
+        }
       ]
     }
   ])

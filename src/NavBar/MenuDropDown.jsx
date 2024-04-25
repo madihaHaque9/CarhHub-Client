@@ -3,18 +3,50 @@ import useAuth from '../hooks/useAuth';
 import { AiOutlineMenu } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import avatarImg from '../assets/avatar/placeholder.jpg'
+import HostModal from '../components/Modal/components/Modal/HostRequestModal';
+import { becomeOwner } from '../api/auth';
+import toast from 'react-hot-toast';
+import useRole from '../hooks/useRole';
 
 const MenuDropDown = () => {
-    const [isOpen, setIsOpen] = useState(false)
   const { user,logOut } = useAuth()
+    const [isOpen, setIsOpen] = useState(false)
+    const [role]=useRole();
+    const [isModalOpen,setIsModalOpen]= useState(false)
+    const closeModal=()=>{
+      setIsModalOpen(false)
+    }
+    const modalHandler =async ()=>{
+      try{
+    const data = await becomeOwner(user?.email)
+    console.log(data)
+    if(data.modifiedCount>0){
+       toast.success("Request is pending. Wait for the admin's approval")
+    }
+    else{
+       toast.success("wait for the approval")
+    }
+      }
+      catch(err){
+       console.log(err)
+      }
+      finally{
+        setIsModalOpen(false)
+      }
+     }
+ 
     return (
         <div className='relative'>
         <div className='flex flex-row items-center gap-3'>
-          {/* Become A Host btn */}
+          {/* Become A owner btn */}
           <div className='hidden md:block'>
-            <button className='text-white disabled:cursor-not-allowed cursor-pointer hover:bg-black py-3 px-4 text-sm font-semibold rounded-full  transition'>
+            {
+              (!user || !role || role ==='passenger' ) && (
+                <button onClick={()=>setIsModalOpen(true)} disabled={!user} className='text-white disabled:cursor-not-allowed cursor-pointer hover:bg-black py-3 px-4 text-sm font-semibold rounded-full  transition'>
               Rent Your Car
             </button>
+              )
+            }
           </div>
           {/* Dropdown btn */}
           <div
@@ -76,6 +108,7 @@ const MenuDropDown = () => {
             </div>
           </div>
         )}
+        <HostModal isOpen={isModalOpen} closeModal={closeModal} modalHandler={modalHandler} ></HostModal>
       </div>
     );
 };

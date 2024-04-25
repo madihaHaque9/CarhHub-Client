@@ -1,23 +1,25 @@
-
-import {  useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import useAuth from '../../../hooks/useAuth'
+import {  getOwnerBookings } from '../../../api/bookings'
+import { useQuery } from '@tanstack/react-query'
+import TableRow from '../TableRows/TableRow'
 
-import { getOwnerCars } from '../../../api/cars';
-import CarDataRow from '../TableRows/CarDataRow';
-
-import useAuth from '../../../hooks/useAuth';
-
-const MyListings = () => {
-   
-    const {user}=useAuth();
-    const [cars,setCars]=useState([]);
-    useEffect(()=>{
-        getOwnerCars(user?.email).then(data=>setCars(data))
-    },[user])
+const ManageBookings = () => {
+    const { user, loading } = useAuth()
+    const {
+      data: bookings = [],
+      
+      
+    } = useQuery({
+      queryKey: ['bookings', user?.email],
+      enabled: !loading,
+      queryFn: async () => await getOwnerBookings(user?.email),
+    })
+      console.log(bookings)
   return (
     <>
       <Helmet>
-        <title>My Listings</title>
+        <title>Manage Bookings</title>
       </Helmet>
 
       <div className='container mx-auto px-4 sm:px-8'>
@@ -37,7 +39,7 @@ const MyListings = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Location
+                      Renter Info
                     </th>
                     <th
                       scope='col'
@@ -61,19 +63,11 @@ const MyListings = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Delete
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Update
+                      Action
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                    {cars.map(car=><CarDataRow key={car._id} car={car}></CarDataRow>)}
-                </tbody>
+                <tbody> {bookings && bookings.map(booking=> <TableRow key={booking._id} booking={booking}></TableRow>)}</tbody>
               </table>
             </div>
           </div>
@@ -83,4 +77,4 @@ const MyListings = () => {
   )
 }
 
-export default MyListings
+export default ManageBookings

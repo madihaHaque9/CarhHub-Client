@@ -1,38 +1,38 @@
-import { useState } from 'react'
-// Components
-
-
-
-// Icons
-import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
-import { AiOutlineBars } from 'react-icons/ai'
-import { BsGraphUp } from 'react-icons/bs'
-import Logo from './Logo'
-import MenuItem from './MenuItem'
-
-import ToggleBtn from '../../components/Button/ToggleBtn'
-import { IoAddCircle } from 'react-icons/io5'
-import { MdManageHistory } from "react-icons/md";
-import { FaThList } from "react-icons/fa";
-
+import { useContext, useState } from 'react';
+import { GrLogout } from 'react-icons/gr';
+import { FcSettings } from 'react-icons/fc';
+import { AiOutlineBars } from 'react-icons/ai';
+import { BsGraphUp } from 'react-icons/bs';
+import Logo from './Logo';
+import MenuItem from './MenuItem';
+import ToggleBtn from '../../components/Button/ToggleBtn';
+import { AuthContext } from '../../providers/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import useRole from '../../hooks/useRole';
+import OwnerMenu from './OwnerMenu';
+import AdminMenu from './AdminMenu';
+import PassangerMenu from './PassangerMenu';
 
 const Sidebar = () => {
-  const [toggle, setToggle] = useState(false)
-  const [isActive, setActive] = useState(false)
+  const { logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [toggle, setToggle] = useState(false);
+  const [isActive, setActive] = useState(false);
+  const [role] = useRole();
+  const { user } = useAuth();
 
-  //   For guest/host menu item toggle button
   const toggleHandler = event => {
-    setToggle(event.target.checked)
-  }
-  // Sidebar Responsive Handler
+    setToggle(event.target.checked);
+  };
+
   const handleToggle = () => {
-    setActive(!isActive)
-  }
+    setActive(!isActive);
+  };
+
   return (
     <>
-      {/* Small Screen Navbar */}
-      <div className='bg-gray-100  flex justify-between md:hidden'>
+      <div className='bg-gray-800 md:bg-transparent flex justify-between md:hidden text-white'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Logo />
@@ -41,72 +41,66 @@ const Sidebar = () => {
 
         <button
           onClick={handleToggle}
-          className='mobile-menu-button p-4 focus:outline-none focus:bg-gray-200'
+          className='mobile-menu-button p-4 focus:outline-none focus:bg-black'
         >
-          <AiOutlineBars className='h-5 w-5' />
+          <AiOutlineBars className='h-5 w-5 text-white' />
         </button>
       </div>
-      {/* Sidebar */}
+
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden text-white bg-red-700 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden text-white bg-red-700 w-64 space-y-6 px-4 py-6 md:py-4 absolute inset-y-0 left-0 transform ${
           isActive && '-translate-x-full'
-        }  md:translate-x-0  transition duration-200 ease-in-out`}
+        }  md:translate-x-0 transition duration-200 ease-in-out`}
       >
         <div>
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center  mx-auto'>
+            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center mx-auto'>
               <Logo />
             </div>
           </div>
 
-          {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
-            {/* If a user is host */}
-            <ToggleBtn toggleHandler={toggleHandler} />
+            {role === 'owner' && <ToggleBtn toggleHandler={toggleHandler} />}
             <nav>
               <MenuItem
                 icon={BsGraphUp}
                 label='Statistics'
                 address='/dashboard'
               />
-              <MenuItem
-                icon={IoAddCircle}
-                label='Add Car'
-                address='add-car'
-              />
-              <MenuItem
-                icon={FaThList}
-                label='My Car List'
-                address='my-listings'
-              />
-              {/* <MenuItem
-                icon={MdManageHistory}
-                label='Manage Cars'
-                address='/my-listings'
-              /> */}
-
-              {/* Menu Items */}
+              {role === 'passenger' && <PassangerMenu />}
+              {role === 'owner' ? (
+                toggle ? (
+                  <OwnerMenu />
+                ) : (
+                  <PassangerMenu />
+                )
+              ) : (
+                ''
+              )}
+              {role === 'admin' && <AdminMenu />}
             </nav>
           </div>
         </div>
 
         <div>
-          <hr />
-
+          <hr className='border-gray-600' />
           <MenuItem
             icon={FcSettings}
-            label='Profile' className='text-white'
+            label='Profile'
+            className='text-white'
             address='/dashboard/profile'
           />
-          <button className='flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'>
+          <button
+            onClick={logOut}
+            className='flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-600 transition-colors duration-300 transform'
+          >
             <GrLogout className='w-5 h-5' />
-
             <span className='mx-4 font-medium'>Logout</span>
           </button>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

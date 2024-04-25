@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import { DateRange } from 'react-date-range'
 import { TbFidgetSpinner } from 'react-icons/tb'
@@ -51,7 +52,12 @@ const AddCarForm = ({
               <label htmlFor='location' className='block text-gray-600'>
                 Select Availability Range
               </label>
-              <DateRange rangeColors={['#F43F5E']} />
+              <DateRange rangeColors={[
+        {
+          color: '#F43F5E', 
+        },
+      ]} onChange={handleDates} ranges={[dates]}
+              minDate={new Date()}/>
             </div>
           </div>
           <div className='space-y-6'>
@@ -73,7 +79,7 @@ const AddCarForm = ({
               <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
                 <div className='flex flex-col w-max mx-auto text-center'>
                   <label>
-                    <input
+                    <input onChange={e=>handleImageChange (e.target.files[0])}
                       className='text-sm cursor-pointer w-36 hidden'
                       type='file'
                       name='image'
@@ -82,7 +88,7 @@ const AddCarForm = ({
                       hidden
                     />
                     <div className='bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                      Upload Image
+                      {uploadButtonText}
                     </div>
                   </label>
                 </div>
@@ -119,35 +125,21 @@ const AddCarForm = ({
             </div>
 
             <div className='flex justify-between gap-2'>
-              {/* <div className='space-y-1 text-sm'>
-                <label htmlFor='bedrooms' className='block text-gray-600'>
-                  Bedrooms
+             
+            </div>
+            <div className='space-y-1 text-sm'>
+                <label htmlFor='owner-number' className='block text-gray-600'>
+                Owner's Number
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='bedrooms'
-                  id='bedrooms'
-                  type='number'
-                  placeholder='Bedrooms'
+                  name='ownerNumber'
+                  id='ownerNumber'
+                  type='text'
+                  placeholder='ownerNumber'
                   required
                 />
               </div>
-
-              <div className='space-y-1 text-sm'>
-                <label htmlFor='bathrooms' className='block text-gray-600'>
-                  Bathrooms
-                </label>
-                <input
-                  className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='bathrooms'
-                  id='bathrooms'
-                  type='number'
-                  placeholder='Bathrooms'
-                  required
-                />
-              </div> */}
-            </div>
-
             <div className='space-y-1 text-sm'>
               <label htmlFor='description' className='block text-gray-600'>
                 Description

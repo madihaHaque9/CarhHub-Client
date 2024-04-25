@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { getToken, saveUser } from "../../../api/auth";
 import toast from "react-hot-toast";
+import img from '../../../assets/bg-image/coupe-1374450_1280.jpg'
 
 
 const SignUp = () => {
@@ -60,11 +61,11 @@ const SignUp = () => {
     
   }
     return (
-        <div className='flex justify-center items-center min-h-screen'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+        <div className='flex justify-center items-center min-h-screen bg-gray-100 bg-cover bg-center' style={{backgroundImage: `url(${img})`}}>
+      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10  text-black'>
         <div className='mb-8 text-center'>
-          <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-          <p className='text-sm text-gray-400'>Welcome to CarHub</p>
+          <h1 className='my-3 text-4xl text-white font-bold'>Sign Up</h1>
+          <p className='text-sm text-white'>Welcome to CarHub</p>
         </div>
         <form onSubmit={handleSubmit}
           noValidate=''
@@ -73,7 +74,7 @@ const SignUp = () => {
         >
           <div className='space-y-4'>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <label htmlFor='email' className='block mb-2 text-sm text-white'>
                 Name
               </label>
               <input
@@ -81,12 +82,12 @@ const SignUp = () => {
                 name='name'
                 id='name'
                 placeholder='Enter Your Name Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-gray-500 bg-transparent text-gray-500'
                 data-temp-mail-org='0'
               />
             </div>
             <div>
-              <label htmlFor='image' className='block mb-2 text-sm'>
+              <label htmlFor='image' className='block mb-2 text-sm text-white'>
                 Select Image:
               </label>
               <input
@@ -98,7 +99,7 @@ const SignUp = () => {
               />
             </div>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <label htmlFor='email' className='block mb-2 text-sm text-white'>
                 Email address
               </label>
               <input
@@ -107,13 +108,13 @@ const SignUp = () => {
                 id='email'
                 required
                 placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-gray-500 bg-transparent text-gray-500'
                 data-temp-mail-org='0'
               />
             </div>
             <div>
               <div className='flex justify-between'>
-                <label htmlFor='password' className='text-sm mb-2'>
+                <label htmlFor='password' className='text-sm mb-2 text-white'>
                   Password
                 </label>
               </div>
@@ -124,7 +125,7 @@ const SignUp = () => {
                 id='password'
                 required
                 placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-gray-500 bg-transparent text-gray-500'
               />
             </div>
           </div>
@@ -132,23 +133,23 @@ const SignUp = () => {
           <div>
             <button
               type='submit'
-              className='bg-rose-500 w-full rounded-md py-3 text-white'
+              className='bg-black w-full rounded-md py-3 text-white'
             >
               {loading ? <TbFidgetSpinner className="animate-spin m-auto"></TbFidgetSpinner>: 'Continue'}
             </button>
           </div>
         </form>
         <div className='flex items-center pt-4 space-x-1'>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-          <p className='px-3 text-sm dark:text-gray-400'>
+          <div className='flex-1 h-px sm:w-16 dark:black'></div>
+          <p className='px-3 text-sm text-white'>
             Signup with social accounts
           </p>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
+          <div className='flex-1 h-px sm:w-16 dark:bg-black'></div>
         </div>
         <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer' onClick={handleGoogleSignIn}>
           <FcGoogle size={32} />
 
-          <p>Continue with Google</p>
+          <p className="text-white">Continue with Google</p>
         </div>
         <p className='px-6 text-sm text-center text-gray-400'>
           Already have an account?{' '}
